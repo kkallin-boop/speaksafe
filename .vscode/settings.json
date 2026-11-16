@@ -1,0 +1,6 @@
+{
+  "python.terminal.activateEnvironment": true,
+  "files.exclude": { "**/__pycache__": true },
+  "editor.tabSize": 2,
+  "[python]": { "editor.tabSize": 4 }
+}

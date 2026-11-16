@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SpeakSafe ITSB</title>
+<link rel="icon" type="image/png" href="/static/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;1,500&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="lg">
+<nav>
+  <div class="logo"><span class="lgo"><i class="li"></i></span>Speak<em>Safe</em></div>
+  <div class="pill hide" id="menu">
+    <button data-v="home" class="on">Beranda</button><button data-v="report">Laporkan</button><button data-v="reports">Riwayat</button><button id="out">Keluar</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LOGIN / REGISTRASI -->
+<section id="v-login">
+  <div class="hero lhero"><div class="lgo"><i class="li"></i></div>
+    <h1>Speak <em>Safe</em></h1>
+    <p>Ruang aman mahasiswa ITSB untuk melaporkan bullying dan kekerasan.</p>
+  </div>
+  <div class="rc">
+    <div class="acc" id="aLogin">
+      <button class="h" type="button"><span><h2>Login</h2><small>Masuk dengan akun terdaftar</small></span><span class="ar">›</span></button>
+      <div class="bd">
+        <input id="em" type="email" placeholder="Email kampus (nama@itsb.ac.id)" aria-label="Email kampus" autocomplete="email">
+        <div class="pw"><input id="pw" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password"></div>
+        <div class="ok" id="loginOk"></div><div class="err" id="loginErr"></div>
+        <button class="btn" id="loginBtn">Masuk</button>
+      </div>
+    </div>
+    <div class="acc" id="aReg">
+      <button class="h" type="button"><span><h2>Registrasi</h2><small>Buat akun dengan email kampus</small></span><span class="ar">›</span></button>
+      <div class="bd">
+        <input id="rn" placeholder="Nama lengkap" aria-label="Nama lengkap" autocomplete="name">
+        <input id="re" type="email" placeholder="Email kampus (nama@itsb.ac.id)" aria-label="Email kampus" autocomplete="email">
+        <div class="pw"><input id="rp" type="password" placeholder="Password (min. 8 karakter)" aria-label="Password" autocomplete="new-password"></div>
+        <div class="pw"><input id="rc" type="password" placeholder="Konfirmasi password" aria-label="Konfirmasi password" autocomplete="new-password"></div>
+        <div class="err" id="regErr"></div>
+        <button class="btn" id="regBtn">Daftar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME -->
+<section id="v-home" class="hide">
+  <div class="bento">
+    <div class="col">
+      <div class="hero big">
+        <h1>We are <em>here</em><br>for you</h1>
+        <p>Laporkan bullying dengan aman. Tim PPKPT ITSB siap mendengar.</p>
+        <button class="btn" data-go="report">Laporkan sekarang →</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="lk a" data-act="jadwal" tabindex="0"><div><h3>Jadwal sosialisasi</h3><small>Kalender acara pencegahan bullying</small></div><span class="ar">→</span></div>
+      <div class="lk b" data-act="sop" tabindex="0"><div><h3>Panduan SOP PPKPT</h3><small>Dokumen resmi &amp; ringkasan alur</small></div><span class="ar">→</span></div>
+      <div class="hist"><h3>Riwayat pelaporan <a data-go="reports">Semua</a></h3><div id="hList"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT -->
+<section id="v-report" class="hide">
+  <div class="card narrow">
+    <button class="back" data-back>← Kembali</button>
+    <h2>Formulir <em>laporan</em></h2>
+    <p style="color:var(--mut)">Isi seperlunya. Detail bisa ditambah lewat komentar nanti.</p>
+    <label for="jenis">Jenis bullying</label>
+    <select id="jenis"><option>Verbal (ejekan, hinaan)</option><option>Fisik</option><option>Siber (media sosial/chat)</option><option>Pengucilan sosial</option><option>Pelecehan</option><option>Tindakan kriminal</option><option>Lainnya</option></select>
+    <input id="lain" class="hide" style="margin-top:10px" placeholder="Isi di sini (ketik manual)" maxlength="80" aria-label="Jenis bullying lainnya">
+    <label for="tgl">Tanggal kejadian</label><input id="tgl" type="date">
+    <label for="lok">Lokasi kejadian</label><input id="lok" placeholder="Contoh: kelas, kantin, grup WhatsApp">
+    <label for="kron">Kronologi</label><textarea id="kron" placeholder="Ceritakan apa yang terjadi..."></textarea>
+    <label for="ket">Keterangan tambahan <span class="opt">(opsional)</span></label>
+    <textarea id="ket" placeholder="Saksi, bukti, dampak yang kamu rasakan, atau hal lain yang perlu PPKPT ketahui..."></textarea>
+    <label>Identitas pelapor</label>
+    <div class="seg">
+      <label><input type="radio" name="idt" value="anon" checked>Anonim<small>Nama disembunyikan</small></label>
+      <label><input type="radio" name="idt" value="id">Dengan identitas<small>Pakai nama &amp; email kampusmu</small></label>
+    </div>
+    <div class="err" id="repErr"></div>
+    <button class="btn" style="width:100%;margin-top:14px" id="sendBtn">Kirim laporan</button>
+  </div>
+</section>
+
+<!-- DONE -->
+<section id="v-done" class="hide">
+  <div class="card narrow" style="text-align:center">
+    <button class="back" data-back style="float:left">← Beranda</button>
+    <div style="clear:both"></div>
+    <span class="tag">Laporan terkirim</span>
+    <h2 style="margin-top:12px">Terima kasih sudah <em>berani bicara</em></h2>
+    <p style="color:var(--mut)">Laporanmu sudah diteruskan ke PPKPT ITSB.</p>
+    <div class="num" id="doneNum"></div>
+    <div class="row2" style="margin-top:14px"><button class="btn" data-go="reports">Lihat riwayat laporan</button><button class="btn ghost" data-go="home">Ke beranda</button></div>
+  </div>
+</section>
+
+<!-- RIWAYAT -->
+<section id="v-reports" class="hide">
+  <div class="card narrow">
+    <button class="back" data-back>← Kembali</button>
+    <h2>Riwayat <em>laporan</em></h2>
+    <div id="noRep" style="color:var(--mut);margin-top:10px">Belum ada laporan. <a href="#" data-go="report" style="color:var(--ol)">Buat laporan</a></div>
+    <div id="list"></div>
+  </div>
+  <div class="card narrow hide" id="detail" style="margin-top:0">
+    <div class="num" id="tNum"></div>
+    <span class="tag" id="tTag"></span>
+    <p id="tInfo" style="color:var(--mut);margin:12px 0 0;font-size:14px"></p>
+    <ul class="tl" id="tl"></ul>
+    <h3 style="font-size:20px">Komentar</h3>
+    <div class="cms" id="cms"></div>
+    <div class="crow"><input id="cin" placeholder="Tulis komentar untuk PPKPT..." aria-label="Komentar"><button class="btn sm" id="cbtn">Kirim</button></div>
+  </div>
+</section>
+</main>
+<footer>SpeakSafe ITSB · Sistem pelaporan bullying</footer>
+
+<div class="dev" id="dev">
+  <div class="dp hide" id="dp">
+    <h3>KL3</h3>
+    <p>Developer SpeakSafe<br>Data Science, ITSB</p>
+    <div class="mem"><b>Angelique Kiyoshi Lakeisha B.U</b><small>52250001</small></div>
+    <div class="mem"><b>Putri Adria Garini</b><small>52250002</small></div>
+    <div class="mem"><b>Hirose Kawarin Sirait</b><small>52250012</small></div>
+    <div class="mem"><b>Cecilia Mutiara Handayani</b><small>52250013</small></div>
+  </div>
+  <button id="devBtn" aria-label="Profil developer">KL3</button>
+</div>
+<div class="ld hide" id="ld" role="status" aria-label="Memuat"><i></i></div>
+<div class="mdl hide" id="mdl"><div class="box" id="box"><button class="back" id="mback">← Kembali</button><div id="mb"></div><div class="row2" id="mf" style="margin-top:18px"></div></div></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
