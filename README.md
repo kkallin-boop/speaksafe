@@ -43,6 +43,3 @@ Kalau `venv\Scripts\activate` ditolak (execution policy), jalankan `Set-Executio
 
 ## Reset data uji
 Hentikan web, hapus `speaksafe.db`, jalankan lagi (database kosong dibuat otomatis).
-
-## Dikirim ke teman
-Kirim seluruh folder sebagai satu zip, TANPA `venv/`, `speaksafe.db`, `secret.key`, dan `__pycache__/`.
